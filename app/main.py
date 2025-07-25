@@ -3,11 +3,10 @@ import pandas as pd
 import numpy as np
 from io import BytesIO
 from dateutil.relativedelta import relativedelta
-from utils.versioning import get_current_version
+from utils.versioning import get_current_version  # Adjusted import
 
 st.set_page_config(layout="wide")
 st.markdown(f"**App Version:** `{get_current_version()}`")
-
 
 # --- Helper Functions ---
 def load_supplier_data(uploaded_file, sheet_name):
@@ -110,7 +109,7 @@ if uploaded_file:
                     sc = row.get(sc_col, 0) + sc_uplift
                     ur = row.get(ur_col, 0) + ur_uplift
                     eac = row.get(eac_col, row['EAC'])
-                except:
+                except (KeyError, TypeError):
                     sc, ur, eac = 0, 0, 0
 
                 total_cost = calculate_annual_cost(sc, ur, eac)
