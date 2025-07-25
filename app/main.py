@@ -3,10 +3,11 @@ import pandas as pd
 import numpy as np
 from io import BytesIO
 from dateutil.relativedelta import relativedelta
-from app.utils.versioning import get_current_version
+from utils.versioning import get_current_version
 
 st.set_page_config(layout="wide")
 st.markdown(f"**App Version:** `{get_current_version()}`")
+
 
 # --- Helper Functions ---
 def load_supplier_data(uploaded_file, sheet_name):
